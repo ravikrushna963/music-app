@@ -1,9 +1,4 @@
-import React from 'react';
-import Card from './Components/Card';
-import Spinner from './Components/Spinner';
-import { useEffect,useState } from 'react';
-
-const Data = [
+const data = [
     {
     "id": 1,
     "img": "http://docs.google.com/uc?export=open&id=13zVdlVwIy1Zb1obMgWzm-arZNpXEWTxU",
@@ -131,46 +126,4 @@ const Data = [
     "song": "http://docs.google.com/uc?export=open&id=1oTHMYA6sCuzJYMK_6NUx99vjGMNXHJoe",
     "title": "O Maramanishi"
     }
-    ];
-const App = () => {
-  const [data,setData] = useState([]);
-  const [search,setSearch] = useState(null);
-  useEffect(() =>{ 
-    setData(Data)
-  },[search])
-  const onSubmit = e =>{
-    e.preventDefault();
-    setSearch(search);
-  
-    const searchResults = Data.filter(eachApp =>
-      eachApp.movie.toLowerCase().includes(search.toLowerCase()),
-    )
-      setData(searchResults);
-
-    
-  }
-  return (
-    <div>
-        <nav className="navbar navbar-dark bg-dark">
-        <div className="container-fluid">
-            <h3 className="navbar-brand">Krishna Music World <span style={{color:"blue"}}>𝄞</span>	</h3>
-            <form className="d-flex" onSubmit={onSubmit} >
-            <input className="form-control me-2" type="text" onChange={(e) => setSearch(e.target.value)} placeholder="Search" aria-label="Search" />
-            <input className="btn btn-primary" type="submit" value="Search" />
-            </form>
-        </div>
-    </nav>
-    
-    {data.length >=1 ? 
-    <center>
-      <Card songs={data} />
-    </center> 
-    :
-    <Spinner />
-    }
-
-    </div>
-  )
-}
-
-export default App
+    ]
